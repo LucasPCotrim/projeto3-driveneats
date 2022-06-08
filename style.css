@@ -32,13 +32,15 @@
 
 .page_content{
     background-color: #E5E5E5;
-    margin-top: 92px;
-    padding-top: 31px;
+    width: 100vw;
+    margin: 92px 0 92px 0;
+    padding-top: 4px;
+    padding-bottom: 16px;
 }
 
 
 .order_menu{
-    margin-bottom: 27px;
+    margin-top: 27px;
     margin-left: 19px;
 }
 .order_menu > h1{
@@ -96,4 +98,36 @@
     font-size: 16px;
     line-height: 18.75px;
     margin: 0 0 16px 14px;
+}
+
+.bottom_menu{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background: #FFFFFF;
+    height: 92px;
+    width: 100vw;
+}
+.order_button{
+    background-color: #CBCBCB;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 364px;
+    height: 61px;
+    margin: 15px auto;
+    border-radius: 50px;
+    text-align: center;
+}
+.order_button > h2{
+    font-family: 'Roboto', sans-serif;
+    color: #FFFFFF;
+    width: 364px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    text-align: center;
+    letter-spacing: 0.018em;
 }
