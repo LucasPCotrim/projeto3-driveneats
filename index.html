@@ -14,28 +14,31 @@
         <h2>Sua comida em 6 minutos</h2>
     </div>
     <div class="page_content">
-        <div class="order_menu">
+        <div class="order_menu" id="A">
             <h1>Primeiro, seu prato</h1>
             <div class="order_options">
-                <div class="order_option" onclick="highlight_A('opt_A1')" id="opt_A1">
+                <div class="order_option" onclick="highlight('A', 0)">
+                    <img src="imgs/frango_yin_yang 1.png">
+                    <h2>Frango Yin-Yang</h2>
+                    <p>Um pouco de batata, um pouco de salada</p>
+                    <h3>R$ 14,90</h3>
+                    <div class="order_option_status" id="status">
+                        <ion-icon name="checkmark-circle"></ion-icon>
+                    </div>
+                </div>
+                <div class="order_option" onclick="highlight('A', 1)">
                     <img src="imgs/frango_yin_yang 1.png">
                     <h2>Frango Yin-Yang</h2>
                     <p>Um pouco de batata, um pouco de salada</p>
                     <h3>R$ 14,90</h3>
                 </div>
-                <div class="order_option" onclick="highlight_A('opt_A2')" id="opt_A2">
+                <div class="order_option" onclick="highlight('A', 2)">
                     <img src="imgs/frango_yin_yang 1.png">
                     <h2>Frango Yin-Yang</h2>
                     <p>Um pouco de batata, um pouco de salada</p>
                     <h3>R$ 14,90</h3>
                 </div>
-                <div class="order_option" onclick="highlight_A('opt_A3')" id="opt_A3">
-                    <img src="imgs/frango_yin_yang 1.png">
-                    <h2>Frango Yin-Yang</h2>
-                    <p>Um pouco de batata, um pouco de salada</p>
-                    <h3>R$ 14,90</h3>
-                </div>
-                <div class="order_option" onclick="highlight_A('opt_A4')" id="opt_A4">
+                <div class="order_option" onclick="highlight('A', 3)">
                     <img src="imgs/frango_yin_yang 1.png">
                     <h2>Frango Yin-Yang</h2>
                     <p>Um pouco de batata, um pouco de salada</p>
@@ -43,28 +46,28 @@
                 </div>
             </div>
         </div>
-        <div class="order_menu">
+        <div class="order_menu" id="B">
             <h1>Agora, sua bebida</h1>
             <div class="order_options">
-                <div class="order_option" onclick="highlight_B('opt_B1')" id="opt_B1">
+                <div class="order_option" onclick="highlight('B', 0)">
                     <img src="imgs/coquinha_gelada 1.png">
                     <h2>Coquinha gelada</h2>
                     <p>Lata 350ml</p>
                     <h3>R$ 4,90</h3>
                 </div>
-                <div class="order_option" onclick="highlight_B('opt_B2')" id="opt_B2">
+                <div class="order_option" onclick="highlight('B', 1)">
                     <img src="imgs/coquinha_gelada 1.png">
                     <h2>Coquinha gelada</h2>
                     <p>Lata 350ml</p>
                     <h3>R$ 4,90</h3>
                 </div>
-                <div class="order_option" onclick="highlight_B('opt_B3')" id="opt_B3">
+                <div class="order_option" onclick="highlight('B', 2)">
                     <img src="imgs/coquinha_gelada 1.png">
                     <h2>Coquinha gelada</h2>
                     <p>Lata 350ml</p>
                     <h3>R$ 4,90</h3>
                 </div>
-                <div class="order_option" onclick="highlight_B('opt_B4')" id="opt_B4">
+                <div class="order_option" onclick="highlight('B', 3)">
                     <img src="imgs/coquinha_gelada 1.png">
                     <h2>Coquinha gelada</h2>
                     <p>Lata 350ml</p>
@@ -72,28 +75,28 @@
                 </div>
             </div>
         </div>
-        <div class="order_menu">
+        <div class="order_menu" id="C">
             <h1>Por fim, sua sobremesa</h1>
             <div class="order_options">
-                <div class="order_option" onclick="highlight_C('opt_C1')" id="opt_C1">
+                <div class="order_option" onclick="highlight('C', 0)">
                     <img src="imgs/pudim 1.png">
                     <h2>Pudim</h2>
                     <p>Apenas pudim</p>
                     <h3>R$ 7,90</h3>
                 </div>
-                <div class="order_option" onclick="highlight_C('opt_C2')" id="opt_C2">
+                <div class="order_option" onclick="highlight('C', 1)">
                     <img src="imgs/pudim 1.png">
                     <h2>Pudim</h2>
                     <p>Apenas pudim</p>
                     <h3>R$ 7,90</h3>
                 </div>
-                <div class="order_option" onclick="highlight_C('opt_C3')" id="opt_C3">
+                <div class="order_option" onclick="highlight('C', 2)">
                     <img src="imgs/pudim 1.png">
                     <h2>Pudim</h2>
                     <p>Apenas pudim</p>
                     <h3>R$ 7,90</h3>
                 </div>
-                <div class="order_option" onclick="highlight_C('opt_C4')" id="opt_C4">
+                <div class="order_option" onclick="highlight('C', 3)">
                     <img src="imgs/pudim 1.png">
                     <h2>Pudim</h2>
                     <p>Apenas pudim</p>
@@ -110,6 +113,7 @@
         </div>
     </div>
 
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
