@@ -90,6 +90,7 @@ function update_options_selected(order_menu_index, order_menu_option){
 //-------------------------------------------------------------------------
 function update_order_button(){
     let order_button = document.querySelector('.order_button');
+    let order_buton_clickable = document.querySelector('.order_button_clickable');
     const sum_A = sum_array(options_selected['A']);
     const sum_B = sum_array(options_selected['B']);
     const sum_C = sum_array(options_selected['C']);
@@ -97,10 +98,12 @@ function update_order_button(){
     // Check if exactly one option per menu is selected
     let update = false;
     if (sum_A == 1 && sum_B == 1 && sum_C == 1){
-        order_button.classList.add('clickable_button');
-        order_button.getElementsByTagName('h2')[0].innerHTML = "Fechar Pedido";
+        order_button.classList.add('hidden');
+        order_buton_clickable.classList.remove('hidden')
+        //order_button.getElementsByTagName('h2')[0].innerHTML = "Fechar pedido";
     }
 }
+
 
 
 
@@ -118,4 +121,13 @@ function sum_array(array){
         sum += array[i];
     }
     return sum;
+}
+
+
+
+
+function finalize_order(){
+    const order_string = "Olá, gostaria de fazer o pedido:\n- Prato: Frango Yin Yang\n- Bebida: Coquinha Gelada\n- Sobremesa: Pudim\nTotal: R$ 27.70;"
+    const order_url = "https://wa.me/5511979536255?text=" + encodeURIComponent(order_string);
+    parent.location = order_url;
 }

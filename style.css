@@ -125,9 +125,7 @@ body{
                 inset 0px 0px 0px 5px #32B72F;
 }
 
-.hidden{
-    display: none;
-}
+
 
 
 /* ---------------------------------- Bottom Menu ----------------------------------*/
@@ -140,7 +138,22 @@ body{
     height: 92px;
     width: 414px;
 }
+.bottom_menu h2{
+    font-family: 'Roboto', sans-serif;
+    color: #FFFFFF;
+    width: 200px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    text-align: center;
+    letter-spacing: 0.018em;
+}
 .order_button{
+    position: absolute;
+    z-index: 3;
+    left: 0;
+    right: 0;
     background-color: #CBCBCB;
     display: flex;
     flex-direction: column;
@@ -152,18 +165,27 @@ body{
     border-radius: 50px;
     text-align: center;
 }
-.order_button > h2{
-    font-family: 'Roboto', sans-serif;
-    color: #FFFFFF;
-    width: 200px;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 23px;
-    text-align: center;
-    letter-spacing: 0.018em;
-}
-.clickable_button{
+.order_button_clickable{
+    position: absolute;
+    z-index: 4;
+    left: 0;
+    right: 0;
     background-color: #32B72F;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 364px;
+    height: 61px;
+    margin: 15px auto;
+    border-radius: 50px;
+    text-align: center;
     cursor: pointer;
+}
+
+
+
+
+.hidden{
+    display: none;
 }
