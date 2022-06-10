@@ -10,6 +10,20 @@ let options_selected = {'A': [0, 0, 0, 0],
 
 //-----------------------------  Functions---------------------------------
 //-------------------------------------------------------------------------
+
+
+//-------------------------------------------------------------------------
+// Function: highlight
+// Description: Function called whenever user clicks on one of the options.
+// Highlights the border of selected option (and de-selectes previous options
+// in the same menu). Calls the update_order_button() function.
+//
+// Inputs:
+// order_menu_index: Id of order_menu div ('A', 'B', 'C')
+// order_menu_option Which order_option inside the menu (0, 1, 2, 3)
+//
+// Outputs: None;
+//-------------------------------------------------------------------------
 function highlight(order_menu_index, order_menu_option) {
 
     // Change global variable options_selected according to option clicked by user.
@@ -38,7 +52,17 @@ function highlight(order_menu_index, order_menu_option) {
 }
 
 
-
+//-------------------------------------------------------------------------
+// Function: update_options_selected
+// Descripton: Updates the global dictionary options_selected according
+// to selected option
+//
+// Inputs:
+// order_menu_index: Id of order_menu div ('A', 'B', 'C')
+// order_menu_option Which order_option inside the menu (0, 1, 2, 3)
+//
+// Outputs: None;
+//-------------------------------------------------------------------------
 function update_options_selected(order_menu_index, order_menu_option){
 
     // Get number of options in the "order_menu_index" menu.
@@ -55,23 +79,39 @@ function update_options_selected(order_menu_index, order_menu_option){
 
 
 
-
+//-------------------------------------------------------------------------
+// Function: update_order_button
+// Descripton: Checks if one option has een selected in each menu and
+// updates order_button
+//
+// Inputs: None
+//
+// Outputs: None;
+//-------------------------------------------------------------------------
 function update_order_button(){
     let order_button = document.querySelector('.order_button');
     const sum_A = sum_array(options_selected['A']);
     const sum_B = sum_array(options_selected['B']);
     const sum_C = sum_array(options_selected['C']);
 
+    // Check if exactly one option per menu is selected
     let update = false;
     if (sum_A == 1 && sum_B == 1 && sum_C == 1){
         order_button.classList.add('clickable_button');
-        order_button.getElementsByTagName('h2')[0].innerHTML = "Fazer Pedido";
+        order_button.getElementsByTagName('h2')[0].innerHTML = "Fechar Pedido";
     }
 }
 
 
 
-
+//-------------------------------------------------------------------------
+// Function: sum_array
+// Descripton: Returns the sum of elements in an array.
+//
+// Inputs: array
+//
+// Outputs: Sum of elements in array
+//-------------------------------------------------------------------------
 function sum_array(array){
     let sum = 0;
     for (let i = 0; i < array.length; i++) {

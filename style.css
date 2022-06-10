@@ -11,6 +11,7 @@ body{
     box-sizing: border-box;
 }
 
+/* ---------------------------------- Top Menu ----------------------------------*/
 .top_menu{
     position: fixed;
     z-index: 2;
@@ -40,6 +41,8 @@ body{
 }
 
 
+
+/* ---------------------------------- Page Content ----------------------------------*/
 .page_content{
     background-color: #E5E5E5;
     width: 414px;
@@ -48,7 +51,7 @@ body{
     padding-bottom: 16px;
 }
 
-
+/* Order Menu*/
 .order_menu{
     margin-top: 27px;
     margin-left: 19px;
@@ -67,7 +70,7 @@ body{
     justify-content: flex-start;
     overflow-x: scroll;
 }
-
+/* Order Option*/
 .order_option{
     position: relative;
     background-color: #FFFFFF;
@@ -127,7 +130,7 @@ body{
 }
 
 
-
+/* ---------------------------------- Bottom Menu ----------------------------------*/
 .bottom_menu{
     position: fixed;
     z-index: 2;
