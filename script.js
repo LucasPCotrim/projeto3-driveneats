@@ -6,7 +6,7 @@ let options_selected = {'A': [0, 0, 0, 0],
                         'B': [0, 0, 0, 0],
                         'C': [0, 0, 0, 0]};
 
-
+let on_order_confirmation_screen = false;
 
 
 //-----------------------------  Functions---------------------------------
@@ -27,6 +27,10 @@ let options_selected = {'A': [0, 0, 0, 0],
 //-------------------------------------------------------------------------
 function highlight(order_menu_index, order_menu_option) {
 
+    if (on_order_confirmation_screen){
+        return;
+    }
+
     // Change global variable options_selected according to option clicked by user.
     update_options_selected(order_menu_index, order_menu_option)
 
@@ -40,7 +44,6 @@ function highlight(order_menu_index, order_menu_option) {
             menu[i].classList.add('selected_border');
             let option_status_list = document.getElementById(order_menu_index).querySelectorAll('.order_option_status');
             option_status_list[i].classList.remove('hidden');
-            console.log(menu[i].querySelector('h3').innerText);
         }
         else{
             menu[i].classList.remove('selected_border');
@@ -127,6 +130,49 @@ function sum_array(array){
 
 
 //-------------------------------------------------------------------------
+// Function: get_names_and_prices_of_selected_options
+// Descripton: Returns the names and prices of options selected by the user
+//
+// Inputs: none
+//
+// Outputs: {options, prices}
+//-------------------------------------------------------------------------
+function get_names_and_prices_of_selected_options(){
+    // Get menus
+    let menu_A = document.getElementById('A').querySelectorAll('.order_option');
+    let menu_B = document.getElementById('B').querySelectorAll('.order_option');
+    let menu_C = document.getElementById('C').querySelectorAll('.order_option');
+
+    // Get options selected
+    const i_A = options_selected['A'].indexOf(1);
+    const i_B = options_selected['B'].indexOf(1);
+    const i_C = options_selected['C'].indexOf(1);
+    let option_A = menu_A[i_A].querySelector('h2').innerText;
+    let option_B = menu_B[i_B].querySelector('h2').innerText;
+    let option_C = menu_C[i_C].querySelector('h2').innerText;
+
+    // Get prices
+    const price_A_string = menu_A[i_A].querySelector('h3').innerText;
+    const price_B_string = menu_B[i_B].querySelector('h3').innerText;
+    const price_C_string = menu_C[i_C].querySelector('h3').innerText;
+    let price_A = Number(price_A_string.slice(3).replace(",", "."));
+    let price_B = Number(price_B_string.slice(3).replace(",", "."));
+    let price_C = Number(price_C_string.slice(3).replace(",", "."));
+
+    // Construct return dictionaries
+    options = {'A': option_A,
+               'B': option_B,
+               'C': option_C};
+    prices = {'A': price_A,
+              'B': price_B,
+              'C': price_C};
+
+    return {options, prices};
+}
+
+
+
+//-------------------------------------------------------------------------
 // Function: build_order_string
 // Descripton: Builds a string that contains order information
 //
@@ -135,65 +181,55 @@ function sum_array(array){
 // Outputs: order_string
 //-------------------------------------------------------------------------
 function build_order_string(){
-    // Get menus
-    let menu_A = document.getElementById('A').querySelectorAll('.order_option');
-    let menu_B = document.getElementById('B').querySelectorAll('.order_option');
-    let menu_C = document.getElementById('C').querySelectorAll('.order_option');
 
-    const N_options_A = options_selected['A'].length;
-    const N_options_B = options_selected['B'].length;
-    const N_options_C = options_selected['C'].length;
-    
-    let price_A = 0;
-    let price_B = 0;
-    let price_C = 0;
-    let price_A_string = '';
-    let price_B_string = '';
-    let price_C_string = '';
-    let option_A = '';
-    let option_B = '';
-    let option_C = '';
-
-    // Get selected options' names
-    for (let i = 0; i < N_options_A; i++) {
-        if (options_selected['A'][i] == 1){
-            option_A = menu_A[i].querySelector('h2').innerText;
-            price_A_string = menu_A[i].querySelector('h3').innerText;
-            price_A = Number(price_A_string.slice(3).replace(",", "."));
-            console.log('price_A = ' + price_A);
-            break;
-        }
-    }
-
-    for (let i = 0; i < N_options_B; i++) {
-        if (options_selected['B'][i] == 1){
-            option_B = menu_B[i].querySelector('h2').innerText;
-            price_B_string = menu_B[i].querySelector('h3').innerText;
-            price_B = Number(price_B_string.slice(3).replace(",", "."));
-            break;
-        }
-    }
-    
-    for (let i = 0; i < N_options_C; i++) {
-        if (options_selected['C'][i] == 1){
-            option_C = menu_C[i].querySelector('h2').innerText;
-            price_C_string = menu_C[i].querySelector('h3').innerText;
-            price_C = Number(price_C_string.slice(3).replace(",", "."));
-            break;
-        }
-    }
+    let {options, prices} = get_names_and_prices_of_selected_options();
     
     // Calculate Total Price
-    const total_price = price_A + price_B + price_C;
+    const total_price = prices['A'] + prices['B'] + prices['C'];
     const total_price_string = 'R$ '+String(total_price.toFixed(2))
 
     // Build order_string
-    const order_string = "Olá, gostaria de fazer o pedido:\n- Prato: "+ option_A +"\n- Bebida: "+ option_B +"\n- Sobremesa: " + option_C + "\nTotal: " + total_price_string;
+    const order_string = "Olá, gostaria de fazer o pedido:\n- Prato: "+ options['A'] +"\n- Bebida: "+ options['B'] +"\n- Sobremesa: " + options['C'] + "\nTotal: " + total_price_string;
 
     return order_string
 }
 
 
+
+
+
+//-------------------------------------------------------------------------
+// Function: build_order_string
+// Descripton: Builds a string that contains order information
+//
+// Inputs: none
+//
+// Outputs: order_string
+//-------------------------------------------------------------------------
+function show_order_confirmation(){
+    // Set global variable to avoid letting user reselect options in this menu.
+    on_order_confirmation_screen = true;
+    
+    // Get names and prices of selected options
+    let {options, prices} = get_names_and_prices_of_selected_options();
+
+    // Set names and prices of selected options
+    let oc_menu = document.querySelector('.confirm_order_window');
+    let oc_lines = oc_menu.querySelectorAll('.confirm_order_window_line');
+    oc_lines[0].querySelectorAll('h2')[0].innerText = options['A'];
+    oc_lines[0].querySelectorAll('h2')[1].innerText = 'R$ ' + String(prices['A'].toFixed(2)).replace('.', ',');
+    oc_lines[1].querySelectorAll('h2')[0].innerText = options['B'];
+    oc_lines[1].querySelectorAll('h2')[1].innerText = 'R$ ' + String(prices['B'].toFixed(2)).replace('.', ',');
+    oc_lines[2].querySelectorAll('h2')[0].innerText = options['C'];
+    oc_lines[2].querySelectorAll('h2')[1].innerText = 'R$ ' + String(prices['C'].toFixed(2)).replace('.', ',');
+
+    const total_price = prices['A'] + prices['B'] + prices['C'];
+    console.log('total price = ' + String(total_price));
+    oc_lines[3].querySelectorAll('h2')[1].innerText = 'R$ ' + String(total_price.toFixed(2)).replace('.', ',');
+
+    // Display order confirmation screen
+    oc_menu.classList.remove('hidden');
+}
 
 
 
@@ -214,4 +250,19 @@ function finalize_order(){
 
     // Link to Whatsapp URL
     parent.location = order_url;
+}
+
+
+//-------------------------------------------------------------------------
+// Function: cancel_order
+// Descripton: Cancels current order and goes back to main screen.
+//
+// Inputs: none
+//
+// Outputs: none
+//-------------------------------------------------------------------------
+function cancel_order(){
+    on_order_confirmation_screen = false;
+    let oc_menu = document.querySelector('.confirm_order_window');
+    oc_menu.classList.add('hidden');
 }

@@ -144,7 +144,7 @@
                 Selecione os 3 itens para fechar o pedido
             </h2>
         </div>
-        <div class="order_button_clickable hidden" onclick="finalize_order()">
+        <div class="order_button_clickable hidden" onclick="show_order_confirmation()">
             <h2>
                 Fechar pedido
             </h2>
@@ -168,8 +168,8 @@
             <h2>TOTAL</h2>
             <h2>R$ xx,xx</h2>
         </div>
-        <button>Tudo certo pode pedir</button>
-        <h3>Cancelar</h3>
+        <button onclick="finalize_order()">Tudo certo, pode pedir!</button>
+        <h3 onclick="cancel_order()">Cancelar</h3>
     </div>
 
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
